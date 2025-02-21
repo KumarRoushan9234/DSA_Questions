@@ -61,8 +61,14 @@ int main()
 
   cout << "\nSubsequences using Recursion:\n";
   vector<int> current;
-  printSubsequences(0, nums, current);
+  vector<vector<int>> store;
+  printSubsequences(0, nums, current, store);
 
+  cout << endl;
+  for (int i = 0; i < n; i++)
+  {
+    cout << nums[i] << " ";
+  }
   // cout << "\nSubsequences using Bit Manipulation:\n";
   // printSubsequencesIterative(nums);
 
