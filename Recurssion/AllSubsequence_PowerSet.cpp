@@ -49,12 +49,9 @@ int main()
 {
   vector<int> nums;
   int n;
-
   cout << "Enter number of elements: ";
   cin >> n;
-  git add.git commit - m "new" git push origin main
-                           cout
-      << "Enter elements: ";
+  cout << "Enter elements: ";
   for (int i = 0; i < n; i++)
   {
     int x;
