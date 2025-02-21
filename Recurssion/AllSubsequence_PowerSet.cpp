@@ -52,8 +52,9 @@ int main()
 
   cout << "Enter number of elements: ";
   cin >> n;
-
-  cout << "Enter elements: ";
+  git add.git commit - m "new" git push origin main
+                           cout
+      << "Enter elements: ";
   for (int i = 0; i < n; i++)
   {
     int x;
