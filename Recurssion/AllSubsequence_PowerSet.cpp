@@ -2,12 +2,13 @@
 using namespace std;
 
 // Recursive function to print all subsequences
-void printSubsequences(int index, vector<int> &nums, vector<int> &current)
+void printSubsequences(int index, vector<int> &nums, vector<int> &current, vector<vector<int>> &store)
 {
   if (index == nums.size())
   {
     if (!current.empty())
     {
+      store.push_back(current);
       for (int num : current)
         cout << num << " ";
       cout << endl;
@@ -17,11 +18,11 @@ void printSubsequences(int index, vector<int> &nums, vector<int> &current)
 
   // Include the current element
   current.push_back(nums[index]);
-  printSubsequences(index + 1, nums, current);
+  printSubsequences(index + 1, nums, current, store);
 
   // Exclude the current element
   current.pop_back();
-  printSubsequences(index + 1, nums, current);
+  printSubsequences(index + 1, nums, current, store);
 }
 
 // Iterative approach using Bit Manipulation
@@ -63,11 +64,16 @@ int main()
   vector<int> current;
   vector<vector<int>> store;
   printSubsequences(0, nums, current, store);
+  cout << "___________________________________" << endl;
 
   cout << endl;
-  for (int i = 0; i < n; i++)
+  for (auto row : store)
   {
-    cout << nums[i] << " ";
+    for (int i : row)
+    {
+      cout << i << " ";
+    }
+    cout << endl;
   }
   // cout << "\nSubsequences using Bit Manipulation:\n";
   // printSubsequencesIterative(nums);
