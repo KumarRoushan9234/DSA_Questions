@@ -2,27 +2,37 @@
 using namespace std;
 
 // Recursive function to print all subsequences
-void printSubsequences(int index, vector<int> &nums, vector<int> &current, vector<vector<int>> &store)
+void printSubsequences(int index, int k, vector<int> &nums, vector<int> &current, vector<vector<int>> &store)
 {
   if (index == nums.size())
   {
     if (!current.empty())
     {
       store.push_back(current);
+      int sum = 0;
       for (int num : current)
-        cout << num << " ";
-      cout << endl;
+        sum += num;
+      if (sum == k)
+      {
+        for (int i : current)
+        {
+          cout << i << " ";
+        }
+        cout << endl;
+      }
     }
+    else
+      store.push_back(INT_MIN);
     return;
   }
 
   // Include the current element
   current.push_back(nums[index]);
-  printSubsequences(index + 1, nums, current, store);
+  printSubsequences(index + 1, k, nums, current, store);
 
   // Exclude the current element
   current.pop_back();
-  printSubsequences(index + 1, nums, current, store);
+  printSubsequences(index + 1, k, nums, current, store);
 }
 
 // Iterative approach using Bit Manipulation
@@ -63,10 +73,12 @@ int main()
   cout << "\nSubsequences using Recursion:\n";
   vector<int> current;
   vector<vector<int>> store;
-  printSubsequences(0, nums, current, store);
+  int k;
+  cout << "Enter k: ";
+  cin >> k;
+  printSubsequences(0, k, nums, current, store);
   cout << "___________________________________" << endl;
 
-  cout << endl;
   for (auto row : store)
   {
     for (int i : row)
@@ -75,6 +87,7 @@ int main()
     }
     cout << endl;
   }
+  cout << "___________________________________" << endl;
   // cout << "\nSubsequences using Bit Manipulation:\n";
   // printSubsequencesIterative(nums);
 
