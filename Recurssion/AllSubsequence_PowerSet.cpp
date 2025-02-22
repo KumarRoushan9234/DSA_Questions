@@ -22,7 +22,9 @@ void printSubsequences(int index, int k, vector<int> &nums, vector<int> &current
       }
     }
     else
-      store.push_back(INT_MIN);
+    {
+      store.push_back({INT_MIN});
+    }
     return;
   }
 
